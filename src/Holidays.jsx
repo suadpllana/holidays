@@ -6,7 +6,7 @@ const Holidays = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
 
   async function getInfo() {
-    const url = `https://holidayapi.com/v1/holidays?pretty&country=XK&year=2023&key=${apiKey}`;
+    const url = `https://holidayapi.com/v1/holidays?pretty&country=XK&year=2024&key=${apiKey}`;
     const response = await fetch(url);
     const data = await response.json();
     console.log(data.holidays);
