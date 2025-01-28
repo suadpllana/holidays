@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-
+import kosovoFlag from "./assets/kosovo-flag.png";
 const Holidays = () => {
   const [holidayData, setHolidayData] = useState([]);
   const [countries, setCountries] = useState([])
   const [month, setMonth] = useState("");
   const [country , setCountry] = useState({
     code: "XK",
-    countryName: "Kosovo"
+    countryName: "Kosovo",
+    image: kosovoFlag
   })
 
   const apiKey = import.meta.env.VITE_API_KEY;
@@ -57,8 +58,10 @@ const Holidays = () => {
     const countryName = selectedCountry.name;
       setCountry({
         code: selectedCode,
-        countryName
+        countryName,
+        image:  selectedCountry.flag == "https://flagsapi.com/XK/flat/64.png" ? kosovoFlag : selectedCountry.flag 
       })
+  
   };
   
 
@@ -72,7 +75,7 @@ const Holidays = () => {
           <option key={country.code} value={country.code}>{country.name}</option>
         ))}
       </select>
-      <h1>Official Holidays in {country.countryName}</h1>
+      <h1>Official Holidays in {country.countryName} <img src={country?.image} alt="" /></h1>
       <div className="container">
         {holidayData.length > 0 ? (
           <>
